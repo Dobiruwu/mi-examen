@@ -1,0 +1,23 @@
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - examen-parcial-1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Ejecutar Pruebas Unitarias
+      run: |
+        python -m unittest discover -s tests -p '*_test.py'
